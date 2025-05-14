@@ -18,42 +18,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentIndex = 0;
   const titleEl = document.querySelector(".title");
-  const style = document.createElement("style");
-  document.head.appendChild(style);
 
-  function updateBackground() {
-    const currentImage = images[currentIndex];
-    const nextIndex = (currentIndex + 1) % images.length;
-    const nextImage = images[nextIndex];
+  if (titleEl) {
+    const style = document.createElement("style");
+    document.head.appendChild(style);
 
-    style.textContent = `
-      .title::before {
-        background-image: url('${currentImage}');
-        opacity: 1;
-      }
-      .title::after {
-        background-image: url('${nextImage}');
-        opacity: 1;
-      }
-    `;
+    function updateBackground() {
+      const currentImage = images[currentIndex];
+      const nextIndex = (currentIndex + 1) % images.length;
+      const nextImage = images[nextIndex];
 
-    setTimeout(() => {
       style.textContent = `
         .title::before {
-          background-image: url('${nextImage}');
+          background-image: url('${currentImage}');
           opacity: 1;
         }
         .title::after {
           background-image: url('${nextImage}');
-          opacity: 0;
+          opacity: 1;
         }
       `;
-      currentIndex = nextIndex;
-    }, 1000); // 1 detik transisi
-  }
 
-  updateBackground();
-  setInterval(updateBackground, 3000); // ganti tiap 3 detik
+      setTimeout(() => {
+        style.textContent = `
+          .title::before {
+            background-image: url('${nextImage}');
+            opacity: 1;
+          }
+          .title::after {
+            background-image: url('${nextImage}');
+            opacity: 0;
+          }
+        `;
+        currentIndex = nextIndex;
+      }, 1000); // 1 detik transisi
+    }
+
+    updateBackground();
+    setInterval(updateBackground, 3000); // ganti tiap 3 detik
+  }
 
   // 🔸 Form Request Rasa
   const form = document.getElementById("request-form");
