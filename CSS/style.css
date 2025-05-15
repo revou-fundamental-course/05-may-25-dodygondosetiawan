@@ -176,6 +176,7 @@ main {
 
 /* Awal aktifkan lapisan pertama */
 .title::before {
+  background-image: url(img/pandawa.png);
   opacity: 1;
 }
 
