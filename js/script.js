@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 🔸 Auto Slide Banner dengan pseudo-element
   const images = [
-    '../css/img/pandawa.png',
-    '../css/img/coklat-keju.png',
-    '../css/img/selay-coklat.png'
+    '../CSS/img/pandawa.png',
+    '../CSS/img/coklat-keju.png',
+    '../CSS/img/selay-coklat.png'
   ];
 
   let currentIndex = 0;
